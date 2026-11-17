@@ -18,22 +18,22 @@ Prometheus collects system metrics from Node Exporter, while Grafana visualizes 
 ## Architecture
 
 ```text
-             AWS EC2
-          Amazon Linux 2023
-                 |
-          Node Exporter
-             Port 9100
-                 |
-                 v
-            Prometheus
-             Port 9090
-                 |
-                 v
-             Grafana
-             Port 3000
-                 |
-                 v
-          Monitoring Dashboard
+  Node Exporter
+  Port 9100
+      |
+      | Exposes metrics
+      v
+Prometheus
+  Port 9090
+      |
+      | Scrapes Node Exporter
+      | Grafana queries Prometheus
+      v
+Grafana
+  Port 3000
+      |
+      v
+Monitoring Dashboard
 ```
 
 ## EC2 Configuration
